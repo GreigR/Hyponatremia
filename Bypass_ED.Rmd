@@ -13,10 +13,20 @@ library(tidyverse)
 ```{r}
 #load the other libraries
 
+<<<<<<< HEAD
 library(lubridate)
 library(gghighlight)
 library(ggthemes)
 library(forecast)
+=======
+<<<<<<< HEAD
+library(lubridate)
+library(gghighlight)
+library(ggthemes)
+=======
+#Currently blank
+>>>>>>> f540fe8b8355a144562338d067f582600d5ad48e
+>>>>>>> 4766c1ca7f59419e439a0e4adc26f2c5d48db514
 
 ```
 
@@ -27,7 +37,6 @@ Column_names <- c(
   "NHI",
   "Date",
   "Na"
-
 )
 
 ```
@@ -88,5 +97,3 @@ ggplot(Na_week, aes(x = Week, y = Mean)) +
   theme_economist_white()
 
 ```
-
-
