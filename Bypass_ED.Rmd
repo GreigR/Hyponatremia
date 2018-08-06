@@ -13,9 +13,13 @@ library(tidyverse)
 ```{r}
 #load the other libraries
 
+<<<<<<< HEAD
 library(lubridate)
 library(gghighlight)
 library(ggthemes)
+=======
+#Currently blank
+>>>>>>> f540fe8b8355a144562338d067f582600d5ad48e
 
 ```
 
@@ -25,7 +29,11 @@ library(ggthemes)
 Column_names <- c(
   "NHI",
   "Date",
+<<<<<<< HEAD
   "Na"
+=======
+  "Sodium"
+>>>>>>> f540fe8b8355a144562338d067f582600d5ad48e
 )
 
 ```
@@ -35,6 +43,7 @@ Column_names <- c(
 
 Sodium_ED <- read_csv("/home/greig/R-projects/Clinical_audits/Sodium/Hyponatremia/Sodium_EMER_2017.csv", skip = 1, col_names = Column_names)
 
+<<<<<<< HEAD
 #glimpse(Sodium_ED)
 ```
 
@@ -63,5 +72,9 @@ ggplot(Sodium_ED, aes (x = Na)) +
 ```{r}
 Low_Na <- Sodium_ED %>% 
   filter(Na < 124)
+```
+
+=======
+glimpse(Sodium_ED)
 ```
 
