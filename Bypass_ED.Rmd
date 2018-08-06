@@ -13,13 +13,10 @@ library(tidyverse)
 ```{r}
 #load the other libraries
 
-<<<<<<< HEAD
 library(lubridate)
 library(gghighlight)
 library(ggthemes)
-=======
-#Currently blank
->>>>>>> f540fe8b8355a144562338d067f582600d5ad48e
+library(forecast)
 
 ```
 
@@ -29,11 +26,8 @@ library(ggthemes)
 Column_names <- c(
   "NHI",
   "Date",
-<<<<<<< HEAD
   "Na"
-=======
-  "Sodium"
->>>>>>> f540fe8b8355a144562338d067f582600d5ad48e
+
 )
 
 ```
@@ -43,8 +37,6 @@ Column_names <- c(
 
 Sodium_ED <- read_csv("/home/greig/R-projects/Clinical_audits/Sodium/Hyponatremia/Sodium_EMER_2017.csv", skip = 1, col_names = Column_names)
 
-<<<<<<< HEAD
-#glimpse(Sodium_ED)
 ```
 
 ```{r}
@@ -74,7 +66,27 @@ Low_Na <- Sodium_ED %>%
   filter(Na < 124)
 ```
 
-=======
-glimpse(Sodium_ED)
+```{r, message=FALSE, warning=FALSE}
+Sodium_ED <- Sodium_ED %>% 
+  mutate(Week = week(Date))
+
+Na_week <- Sodium_ED %>% 
+  group_by(Week) %>% 
+  summarise(Count = n(), Mean = mean(Na))
+
+Na_week <- Na_week %>%
+  filter(Week != 53)
+
+ggplot(Na_week, aes(x = Week, y = Count)) +
+  geom_line() +
+  geom_smooth() +
+  theme_economist_white()
+
+ggplot(Na_week, aes(x = Week, y = Mean)) +
+  geom_line() +
+  geom_smooth() +
+  theme_economist_white()
+
 ```
+
 
