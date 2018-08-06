@@ -10,3 +10,29 @@ library(tidyverse)
 
 ```
 
+```{r}
+#load the other libraries
+
+#Currently blank
+
+```
+
+```{r}
+# Declare the variables
+
+Column_names <- c(
+  "NHI",
+  "Date",
+  "Sodium"
+)
+
+```
+
+```{r}
+#Load th4e data
+
+Sodium_ED <- read_csv("/home/greig/R-projects/Clinical_audits/Sodium/Hyponatremia/Sodium_EMER_2017.csv", skip = 1, col_names = Column_names)
+
+glimpse(Sodium_ED)
+```
+
