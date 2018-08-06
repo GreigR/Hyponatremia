@@ -13,7 +13,9 @@ library(tidyverse)
 ```{r}
 #load the other libraries
 
-#Currently blank
+library(lubridate)
+library(gghighlight)
+library(ggthemes)
 
 ```
 
@@ -23,7 +25,7 @@ library(tidyverse)
 Column_names <- c(
   "NHI",
   "Date",
-  "Sodium"
+  "Na"
 )
 
 ```
@@ -33,6 +35,33 @@ Column_names <- c(
 
 Sodium_ED <- read_csv("/home/greig/R-projects/Clinical_audits/Sodium/Hyponatremia/Sodium_EMER_2017.csv", skip = 1, col_names = Column_names)
 
+#glimpse(Sodium_ED)
+```
+
+```{r}
+#tidy the data
+
+Sodium_ED$Na <- as.integer(Sodium_ED$Na)
+Sodium_ED$Date <- lubridate::dmy_hms(Sodium_ED$Date)
+
+Sodium_ED <- Sodium_ED %>% 
+  filter(!is.na(Na))
+
 glimpse(Sodium_ED)
+```
+
+```{r}
+ggplot(Sodium_ED, aes (x = Na)) +
+  geom_bar(fill = "red") +
+  labs(title = "Frequency distribution of ED Sodium values", x = "Sodium values") +
+  gghighlight(Na < 124, unhighlighted_colour = "blue") +
+  scale_fill_viridis_d() +
+  theme_economist_white() +
+    theme(legend.position = "none")
+```
+
+```{r}
+Low_Na <- Sodium_ED %>% 
+  filter(Na < 124)
 ```
 
